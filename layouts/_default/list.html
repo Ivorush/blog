@@ -3,9 +3,7 @@
   {{ range .Paginator.Pages }}
   <div class="listItem">
     <img
-      src={{
-      .Params.image
-      }}
+      src="{{.Params.image}}"
       alt="{{.Title}}"
       class="listItemImage"
       loading="lazy"
@@ -17,9 +15,11 @@
       <p class="listItemDesc">{{.Params.description}}</p>
       <div class="listItemDetail">
         <img src="{{.Params.avatar}}" loading="lazy" alt="" class="listItemAvatar"/>
-        <span>{{ range (.GetTerms "authors")}}
-          <a href={{.Permalink}}>{{ .Name }}</a>
-          {{end}}</span>
+        <span>
+          {{ range (.GetTerms "authors") }}
+          <a href="{{ .Permalink }}">{{ .Name }}</a>
+          {{ end }}
+         </span>
         <time>{{ dateFormat .Site.Params.dateFormat  .Date}}</time>
       </div>
       <div class="listItemCategories">
